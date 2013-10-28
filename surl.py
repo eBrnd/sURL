@@ -70,6 +70,7 @@ def make_redirect(url, target):
 		<meta http-equiv="refresh" content="0; %s" />
 	</head>
 	<body>
+		Redirecting to %s.<br/>
 		Click <a href="%s">here</a> to proceed
 	</body>
 </html>
@@ -86,7 +87,7 @@ def make_redirect(url, target):
 			last.write(str(id))
 		redir_name = str(id) + weechat.config_get_plugin("suffix")
 		with open(os.path.join(dir, redir_name), "w+") as redirector:
-			redirector.write(template % (url, url))
+			redirector.write(template % (url, url, url))
 		weechat.prnt(target, "[AKA] %s/%s" % (weechat.config_get_plugin("prefix"), redir_name))
 	except:
 		weechat.prnt(target, "[sURL] Could not create file")
