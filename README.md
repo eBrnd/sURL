@@ -41,7 +41,7 @@ Configuration
 
 sURL's config options can be found using `/set plugins.var.python.surl.*`.
 
-* `directory`: The directory the HTML files are placed in. This should be some directory that is shared by your webserver. *Make sure you can write to that directory!*
+* `directory`: The directory the HTML files are placed in. This should be some directory that is shared by your webserver. *Make sure you (the user weechat is running as) can write to that directory!*
 * `prefix`: The prefix of the short link. You need to set this to wherever your webserver is serving the `directory`.
 * `suffix`: File name suffix. Most commonly `.html`, but you can make your own, like `-my-short-link.htm` or something.
 * `urllength`: URL length threshold that triggers sURL. If a link is shorter than this, we won't even bother shortening it.
