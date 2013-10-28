@@ -6,6 +6,12 @@ surlParams = ("urllength", "prefix", "suffix", "directory")
 
 if weechat.config_get_plugin('urllength') == "":
 	weechat.config_set_plugin('urllength', "30")
+if weechat.config_get_plugin('prefix') == "":
+	weechat.config_set_plugin('prefix', "http://www.example.org/surl")
+if weechat.config_get_plugin('suffix') == ""
+	weechat.config_set_plugin('suffix', ".html")
+if weechat.config_get_plugin('directory') == "":
+	weechat.config_set_plugin('directory', "/var/www/surl")
 
 weechat.hook_signal("*,irc_in2_privmsg", "surl_handle_message", "")
 weechat.hook_command("surl", "Sets/gets sURL settings.", "urllength|activechans|printall|directory", \
