@@ -1,4 +1,4 @@
-import os, tempfile, urlparse, weechat, re
+import os, tempfile, urlparse, weechat, re, urllib
 
 weechat.register( "sURL", "backtick", "1.0", "GPL", "Waits for URLs and writes redirector html files somewhere", "", "" )
 
@@ -61,13 +61,15 @@ def make_redirect(url, target):
 	template = """<!DOCTYPE html>
 <html>
 	<head>
-		<meta http-equiv="refresh" content="0; %s" />
+		<title>Redirect</title>
+		<meta http-equiv="refresh" content="0; url=%s" />
 	</head>
 	<body>
 		Click <a href="%s">here</a> to proceed
 	</body>
 </html>
 """
+	url = urllib.quote(url)
 	dir = weechat.config_get_plugin("directory")
 	try:
 		id = 0
