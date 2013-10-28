@@ -69,7 +69,8 @@ def make_redirect(url, target):
 	</body>
 </html>
 """
-	url = urllib.quote(url)
+	url = url.replace("&", "&amp;")
+
 	dir = weechat.config_get_plugin("directory")
 	try:
 		id = 0
