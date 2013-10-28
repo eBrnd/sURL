@@ -8,7 +8,7 @@ if weechat.config_get_plugin('urllength') == "":
 	weechat.config_set_plugin('urllength', "30")
 if weechat.config_get_plugin('prefix') == "":
 	weechat.config_set_plugin('prefix', "http://www.example.org/surl")
-if weechat.config_get_plugin('suffix') == ""
+if weechat.config_get_plugin('suffix') == "":
 	weechat.config_set_plugin('suffix', ".html")
 if weechat.config_get_plugin('directory') == "":
 	weechat.config_set_plugin('directory', "/var/www/surl")
@@ -71,6 +71,7 @@ def make_redirect(url, target):
 		<meta http-equiv="refresh" content="0; url=%s" />
 	</head>
 	<body>
+		Redirecting to %s.<br/>
 		Click <a href="%s">here</a> to proceed
 	</body>
 </html>
@@ -89,7 +90,7 @@ def make_redirect(url, target):
 			last.write(str(id))
 		redir_name = str(id) + weechat.config_get_plugin("suffix")
 		with open(os.path.join(dir, redir_name), "w+") as redirector:
-			redirector.write(template % (url, url))
+			redirector.write(template % (url, url, url))
 		weechat.prnt(target, "[AKA] %s/%s" % (weechat.config_get_plugin("prefix"), redir_name))
 	except:
 		weechat.prnt(target, "[sURL] Could not create file")
