@@ -14,7 +14,7 @@ if weechat.config_get_plugin('directory') == "":
 	weechat.config_set_plugin('directory', "/var/www/surl")
 
 weechat.hook_signal("*,irc_in2_privmsg", "surl_handle_message", "")
-weechat.hook_command("surl", "Sets/gets sURL settings.", "urllength|activechans|printall|directory", \
+weechat.hook_command("surl", "Sets/gets sURL settings.", "urllength|prefix|suffix|directory", \
 	"[<variable> [[=] <value>]]",
 """When run without arguments, displays all sURL settings
 
@@ -96,7 +96,7 @@ def make_redirect(url, target):
 		weechat.prnt(target, "[sURL] Could not create file")
 
 def clean_url(url):
-	safe = "$-_.+!*'(),%:@&=?/;#"
+	safe = "$-_.+!*'(),%:@&=?/;#~"
 	for i in range(len(url)):
 		if not url[i].isalnum() and url[i] not in safe:
 			return url[:i]
