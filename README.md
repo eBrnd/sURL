@@ -33,7 +33,7 @@ Now you can just click, or copypaste the short link into your browser.
 Installation
 ------------
 
-Just dump `surl.py` into your `.weechat/python` or `.weechat/python/autoload` folder, and type `/pyton load surl.py` to start it up.
+Just dump `surl.py` into your `.weechat/python` or `.weechat/python/autoload` folder, and type `/python load surl.py` to start it up.
 
 
 Configuration
